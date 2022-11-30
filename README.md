@@ -1,22 +1,22 @@
 # ArduPilot_MALLARD
 This repository is to compile the custom firmware for Pixhawk4 named Ardusub and flash it onto Pixhawk 4.
 
-# Required hardware
+## Required hardware
 * Pixhawk 4 flight controller
-* PC running ununtu 18.04 and ros melodic
-* Joypad (ps4)
+* PC running Ubuntu 18.04 and ROS melodic
+* Joypad (PS4)
 * USB cables
 * Thrusters, speed controllers and batteries for testing
 
-## 1. Flash pixhawk 4 with custom firmware - Autopilot_MALLARD
+## 1. Flash Pixhawk 4 with custom firmware - Autopilot_MALLARD
 ArduPilot MALLARD (AP-M) is a customised ArduPilot firmware for MALLARD. It is built based on the current stable ArduSub release (ArduSub-4.0.3).
 
 AP-M provides a `Custom` frame configuration adapted to the thruster allocation used on MALLARD. This frame configuration allows higher level motion command input such as `move_forward`, `turn_left`, etc. AP-M also provides two new frame configurations, i.e. `JOYSTICK_PWM_CONTROL` and `ROS_PWM_CONTROL`, which enables sending a PWM signal directly to each individual motor by pushing a joystick or publishing a ROS topic (via MAVROS), respectively. The *ROS PWM Control* frame assumes thruster allocation is dealt with within ROS.
 
-# Hardware
+## Hardware
 For this build guide, we use a Pixhawk 4 and direct USB connection to a PC running Ubuntu.
 
-# Build
+## Build
 ## Install git
 In case you have not yet installed *git*, run the following commands in terminal:
 ```
@@ -29,37 +29,25 @@ Open a terminal and `cd` to our desired root folder for the repository, then clo
 
 * HTTPS:
 ```
-git clone --recursive https://github.com/EEEManchester/ArduPilot_MALLARD.git
-```
-* SSH:
-```
-git clone --recursive git@github.com:EEEManchester/ArduPilot_MALLARD.git
+git clone --recursive https://github.com/EEEManchester/ArduPilot_MallARD.git
 ```
 
-Make sure you log into the correct GitHub account that has access to [EEEManchester](https://github.com/EEEManchester).
-
-## Setup environment
+### Setup environment
 [A script](https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-ubuntu.sh) is provided to automatically setup your build environment.
 ```
 cd ArduPilot_MALLARD
 Tools/environment_install/install-prereqs-ubuntu.sh -y
 ```
-> **Note:** If the end of the command promp is not showing something similar to `echo xxx end------`, the setup is unsuccessful. If it complains about `'some-python-package' has no installation candidate`, your system is probably configured for Python3. You need to run the follow instead:
-> ```
-> Tools/environment_install/install-prereqs-ubuntu-py3.sh -y
-> ```
 
 Reload the path (log-out and log-in to make permanent):
 ```
 . ~/.profile
 ```
 
-## Build with WAF
-Make sure you are in ardupilot folder.
+### Build with waf
+Make sure you are in the repo's root directory.
 
-> **Note:** For Python3 users, you need to replace `waf` with `waf-py3`.
-
-If you have previously built the firmware, you may want to clean WAF first:
+If you have previously built the firmware, you may want to clean waf first:
 ```
 ./waf clean
 ```
